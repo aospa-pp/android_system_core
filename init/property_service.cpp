@@ -1410,6 +1410,8 @@ static void SetSafetyNetProps() {
     InitPropertySet("ro.boot.verifiedbootstate", "green");
     InitPropertySet("ro.boot.veritymode", "enforcing");
 
+    InitPropertySet("ro.crypto.state", "encrypted");
+
 }
 
 void PropertyInit() {
