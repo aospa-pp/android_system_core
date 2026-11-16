@@ -112,6 +112,12 @@ EnforcingStatus StatusFromProperty() {
 }
 
 bool IsEnforcing() {
+    // The recovery runs permissive: its volume manager and the update flows need a
+    // broad set of accesses, and it is a developer-facing tool anyway.  Normal boot
+    // keeps honouring the build type below.
+    if (IsRecoveryMode()) {
+        return false;
+    }
     if (ALLOW_PERMISSIVE_SELINUX) {
         return StatusFromProperty() == SELINUX_ENFORCING;
     }
